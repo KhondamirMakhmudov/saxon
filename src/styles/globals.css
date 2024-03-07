@@ -26,8 +26,13 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+
+.font-lato {
+  font-family: 'Lato', sans-serif;
 }
+
+.font-philosopher {
+  font-family: 'Philosopher';
+}
+
