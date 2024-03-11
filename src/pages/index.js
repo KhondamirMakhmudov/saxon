@@ -9,6 +9,9 @@ import Link from "next/link";
 import { useState } from "react";
 import UniversityCards from "@/components/university-card";
 import CollegeCards from "@/components/college-card";
+import CityCards from "@/components/city-card";
+import AdviceCard from "@/components/advice-card";
+import Footer from "@/components/footer";
 
 export default function Home() {
   const [chooseEducation, setChooseEducation] = useState("university");
@@ -81,14 +84,22 @@ export default function Home() {
           <div className={"flex gap-x-4"}>
             <button
               onClick={() => changeEducation("university")}
-              className={`uppercase text-lg font-bold ${chooseEducation === "university" ? "text-[#007C4C] border-b border-b-[#007C4C]" : "text-[#000] border-b-0"}`}
+              className={`uppercase text-lg font-bold ${
+                chooseEducation === "university"
+                  ? "text-[#007C4C] border-b border-b-[#007C4C]"
+                  : "text-[#000] border-b-0"
+              }`}
             >
               Universitet
             </button>
 
             <button
               onClick={() => changeEducation("college")}
-              className={`uppercase text-lg font-bold ${chooseEducation === "college" ? "text-[#007C4C] border-b border-b-[#007C4C]" : "text-[#000] border-b-0"}`}
+              className={`uppercase text-lg font-bold ${
+                chooseEducation === "college"
+                  ? "text-[#007C4C] border-b border-b-[#007C4C]"
+                  : "text-[#000] border-b-0"
+              }`}
             >
               Amaliy Fanlar Kolleji
             </button>
@@ -203,6 +214,48 @@ export default function Home() {
           <div className={"col-span-6"}></div>
         </div>
       </section>
+
+      <section className={"pt-[70px] pb-[50px] bg-[#F7F7F7]"}>
+        <div className={"grid grid-cols-12 container"}>
+          <div className={"col-span-12 "}>
+            <Title>Saksoniya shaharlari</Title>
+          </div>
+
+          <CityCards title={"Drezden"} image={"/images/city1.png"} />
+          <CityCards title={"Leyptsig"} image={"/images/city2.png"} />
+          <CityCards title={"Frayberg"} image={"/images/city3.png"} />
+          <CityCards title={"Xemnits"} image={"/images/city4.png"} />
+          <CityCards title={"Zwickau"} image={"/images/city5.png"} />
+          <CityCards title={"Zittau Gorlitz"} image={"/images/city6.png"} />
+
+          <div className={"col-span-12 mt-[30px] flex justify-center "}>
+            <Button>read more</Button>
+          </div>
+        </div>
+      </section>
+
+      <section className={"pt-[70px] pb-[50px]"}>
+        <div className={"grid grid-cols-12 container"}>
+          <div className={"col-span-12"}>
+            <Title>Qabul bo`yicha maslahatlar</Title>
+          </div>
+
+          <AdviceCard
+            title={"Tayyorlov kolleji haqida"}
+            image={"/images/advice1.png"}
+          />
+          <AdviceCard
+            title={"Ro‘yhatdan o’tish"}
+            image={"/images/advice2.png"}
+          />
+          <AdviceCard title={"Kurs mazmuni"} image={"/images/advice3.png"} />
+          <AdviceCard title={"Voqealar"} image={"/images/advice4.png"} />
+          <AdviceCard title={"Kurs to’lovi"} image={"/images/advice5.png"} />
+          <AdviceCard title={"Baholash testi"} image={"/images/advice6.png"} />
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }
