@@ -12,6 +12,7 @@ import CollegeCards from "@/components/college-card";
 import CityCards from "@/components/city-card";
 import AdviceCard from "@/components/advice-card";
 import Footer from "@/components/footer";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [chooseEducation, setChooseEducation] = useState("university");
@@ -33,24 +34,43 @@ export default function Home() {
             "container flex flex-col items-start justify-center pt-[50px]"
           }
         >
-          <h2 className={"uppercase text-[#00B06C] mb-[10px]"}>
+          <motion.h2
+            initial={{ opacity: 0, translateY: "-100px" }}
+            animate={{ opacity: 100, translateY: "0px" }}
+            transition={{ duration: 0.7 }}
+            className={"uppercase text-[#00B06C] mb-[10px]"}
+          >
             GET education WITH sakson universities
-          </h2>
-          <h1
+          </motion.h2>
+          <motion.h1
+            initial={{ opacity: 0, translateX: "-100px" }}
+            animate={{ opacity: 100, translateX: "0px" }}
+            transition={{ duration: 0.7 }}
             className={
               "text-[64px] text-[#fff] font-philosopher uppercase mb-[15px] "
             }
           >
             BEST universities <br />
             of saxon
-          </h1>
-          <p className={"text-lg text-[#fff] font-semibold mb-[25px]"}>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, translateX: "100px" }}
+            animate={{ opacity: 100, translateX: "0px" }}
+            transition={{ duration: 0.7 }}
+            className={"text-lg text-[#fff] font-semibold mb-[25px] w-4/5"}
+          >
             Lorem ipsum dolor sit amet consectetur. Massa fringilla quam amet
             velit. Risus tristique montes metus elementum lacinia at. Justo
             venenatis interdum id nulla vestibulum. Fringilla nisi sit ut in at
             lacus pellentesque quis nisi.{" "}
-          </p>
-          <Button>read more</Button>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, translateY: "100px" }}
+            animate={{ opacity: 100, translateY: "0px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <Button>read more</Button>
+          </motion.div>
         </div>
       </div>
       <section className={"grid grid-cols-12 gap-x-[30px] bg-[#F7F7F7]"}>
