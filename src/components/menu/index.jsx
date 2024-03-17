@@ -3,6 +3,7 @@ import Image from "next/image";
 import { get, isEqual } from "lodash";
 import Link from "next/link";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 export const menuData = [
   {
@@ -64,14 +65,19 @@ const Menu = ({ active = 0 }) => {
           " container z-50 items-center justify-between grid grid-cols-12"
         }
       >
-        <div className={"col-span-4 z-50 py-2 "}>
+        <motion.div
+          initial={{ opacity: 0, translateX: "-100px" }}
+          animate={{ opacity: 100, translateX: "0px" }}
+          transition={{ duration: 0.6 }}
+          className={"col-span-4 z-50 py-2 "}
+        >
           <Image
             src={"/images/saxon_brand.png"}
             alt={"saxon_brand"}
             width={360}
             height={80}
           />
-        </div>
+        </motion.div>
 
         <ul
           className={
