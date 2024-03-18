@@ -14,6 +14,9 @@ import AdviceCard from "@/components/advice-card";
 import Footer from "@/components/footer";
 import { motion, useAnimation, useInView } from "framer-motion";
 import Reveal from "@/components/reveal";
+import RevealLeft from "@/components/reveal/revealLeft";
+import RevealRight from "@/components/reveal/revealRight";
+import RevealBottom from "@/components/reveal/revealBottom";
 
 export default function Home() {
   const [chooseEducation, setChooseEducation] = useState("university");
@@ -117,10 +120,10 @@ export default function Home() {
           ref={ref}
           className={"col-span-12 container flex items-center justify-between"}
         >
-          <Reveal>
+          <RevealLeft>
             <Title>Sakson ta’lim muassasalari</Title>
-          </Reveal>
-          <Reveal>
+          </RevealLeft>
+          <RevealRight>
             <div className={"flex gap-x-4"}>
               <button
                 onClick={() => changeEducation("university")}
@@ -144,7 +147,7 @@ export default function Home() {
                 Amaliy Fanlar Kolleji
               </button>
             </div>
-          </Reveal>
+          </RevealRight>
         </div>
         {chooseEducation === "university" ? (
           <div className={"col-span-12 container my-[30px] "}>
@@ -233,7 +236,7 @@ export default function Home() {
               <Title>Sakson ilmiy aloqasi haqida</Title>
             </Reveal>
 
-            <Reveal>
+            <RevealRight>
               <p className={"my-[20px] font-semibold text-[#474747]"}>
                 Lorem ipsum dolor sit amet consectetur. Luctus non aliquet dolor
                 laoreet. Nisl diam ut nibh tempor eget ullamcorper. Non
@@ -244,15 +247,15 @@ export default function Home() {
                 Scelerisque tellus viverra orci pretium odio adipiscing volutpat
                 faucibus eget.
               </p>
-            </Reveal>
+            </RevealRight>
 
-            <Reveal>
+            <RevealLeft>
               <h3 className={"text-2xl font-philosopher font-bold"}>
                 Ustunliklar
               </h3>
-            </Reveal>
+            </RevealLeft>
 
-            <Reveal>
+            <RevealRight>
               <ul
                 className={
                   "list-disc ml-[20px] my-[20px] flex flex-col gap-y-2"
@@ -263,11 +266,11 @@ export default function Home() {
                 <li>Nisl diam ut nibh tempor eget ullamcorper.</li>
                 <li>Non hendrerit id nunc nibh vitae sed sit.</li>
               </ul>
-            </Reveal>
+            </RevealRight>
 
-            <Reveal>
+            <RevealBottom>
               <Button>read more</Button>
-            </Reveal>
+            </RevealBottom>
           </div>
 
           <div className={"col-span-6"}></div>
