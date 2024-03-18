@@ -53,7 +53,7 @@ const Menu = ({ active = 0 }) => {
   const { t } = useTransition();
 
   return (
-    <div className={"bg-[#00965C] relative z-70"}>
+    <div className={"bg-[#00965C] md:block hidden relative  z-70 "}>
       <div className={"left-0 bg-white w-1/2  h-full -z-0 absolute"}></div>
       <div
         className={"absolute inset-0 z-20  bg-no-repeat bg-center"}

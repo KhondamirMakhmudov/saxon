@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 
 const Header = () => {
   return (
-    <div className={"grid grid-cols-12 bg-[#006C42] py-2"}>
-      <div className={"col-span-12 container flex justify-between "}>
+    <div className={" grid-cols-12 bg-[#006C42] py-2 md:grid hidden"}>
+      <div
+        className={"col-span-12 container flex justify-between items-center"}
+      >
         <motion.div
           initial={{ opacity: 0, translateY: "-20px" }}
           animate={{ opacity: 100, translateY: "0px" }}
@@ -21,7 +23,9 @@ const Header = () => {
               width={24}
               height={24}
             />
-            <span className={"text-[#fff]"}>info@saxonscienceliaison.uz</span>
+            <span className={"text-[#fff] md:text-sm lg:text-base text-xs"}>
+              info@saxonscienceliaison.uz
+            </span>
           </Link>
 
           <Link href={"/"} className={"flex gap-x-2 items-center"}>
@@ -31,7 +35,9 @@ const Header = () => {
               width={24}
               height={24}
             />
-            <span className={"text-[#fff]"}>+99890 000 00 00</span>
+            <span className={"text-[#fff] md:text-sm lg:text-base text-xs"}>
+              +99890 000 00 00
+            </span>
           </Link>
         </motion.div>
 
@@ -44,11 +50,17 @@ const Header = () => {
           <Search />
           <div className={"flex gap-x-1"}>
             <Link href={"/"}>
-              <span className={"text-[#fff]"}>Ro’yhatdan o’tish </span>
+              <span className={"text-[#fff]  md:text-sm lg:text-base text-xs"}>
+                Ro’yhatdan o’tish{" "}
+              </span>
             </Link>
-            <span className={"text-[#fff]"}>/</span>
+            <span className={"text-[#fff] md:text-sm lg:text-base text-xs"}>
+              /
+            </span>
             <Link href={"/"}>
-              <span className={"text-[#fff]"}>Kirish</span>
+              <span className={"text-[#fff]  md:text-sm lg:text-base text-xs"}>
+                Kirish
+              </span>
             </Link>
           </div>
         </motion.div>

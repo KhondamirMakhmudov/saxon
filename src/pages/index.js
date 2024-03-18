@@ -1,18 +1,18 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+
 import Header from "@/components/header";
 import Menu from "@/components/menu";
 import Button from "@/components/button";
 import Card from "@/components/card";
 import Title from "@/components/title";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import UniversityCards from "@/components/university-card";
 import CollegeCards from "@/components/college-card";
 import CityCards from "@/components/city-card";
 import AdviceCard from "@/components/advice-card";
 import Footer from "@/components/footer";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import Reveal from "@/components/reveal";
 import RevealLeft from "@/components/reveal/revealLeft";
 import RevealRight from "@/components/reveal/revealRight";
@@ -21,38 +21,32 @@ import RevealBottom from "@/components/reveal/revealBottom";
 export default function Home() {
   const [chooseEducation, setChooseEducation] = useState("university");
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const mainControls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView]);
   const changeEducation = (education) => {
     setChooseEducation(education);
   };
 
   return (
-    <div className={"min-h-[100vh]"}>
+    <div className={"min-h-[100vh] md:px-4 px-0"}>
       <Header />
       <Menu active={1} />
       <div
         style={{ backgroundImage: "url(/images/bg_saxon.png)" }}
-        className={"w-full h-[590px] bg-no-repeat bg-cover "}
+        className={
+          "w-full lg:h-[590px] md:h-[500px] h-[400px] bg-no-repeat bg-cover "
+        }
       >
         <div
           className={
-            "container flex flex-col items-start justify-center pt-[50px]"
+            "container flex flex-col md:items-start items-center justify-center pt-[100px]"
           }
         >
           <motion.h2
             initial={{ opacity: 0, translateY: "-100px" }}
             animate={{ opacity: 100, translateY: "0px" }}
             transition={{ duration: 0.7 }}
-            className={"uppercase text-[#00B06C] mb-[10px]"}
+            className={
+              "uppercase text-[#00B06C] lg:text-base md:text-sm text-xs mb-[10px]"
+            }
           >
             GET education WITH sakson universities
           </motion.h2>
@@ -61,17 +55,28 @@ export default function Home() {
             animate={{ opacity: 100, translateX: "0px" }}
             transition={{ duration: 0.7 }}
             className={
-              "text-[64px] text-[#fff] font-philosopher uppercase mb-[15px] "
+              "lg:text-[64px] md:text-2xl text-xl text-[#fff] font-philosopher uppercase mt-[20px] lg:mb-[35px] md:mb-[10px] mb-0"
             }
           >
-            BEST universities <br />
+            BEST universities
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, translateX: "-100px" }}
+            animate={{ opacity: 100, translateX: "0px" }}
+            transition={{ duration: 0.7 }}
+            className={
+              "lg:text-[64px] md:text-2xl text-xl text-[#fff] font-philosopher uppercase  mb-[30px]"
+            }
+          >
             of saxon
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, translateX: "100px" }}
             animate={{ opacity: 100, translateX: "0px" }}
             transition={{ duration: 0.7 }}
-            className={"text-lg text-[#fff] font-semibold mb-[25px] w-4/5"}
+            className={
+              "lg:text-lg md:text-base text-sm text-[#fff] font-semibold mb-[25px] w-4/5"
+            }
           >
             Lorem ipsum dolor sit amet consectetur. Massa fringilla quam amet
             velit. Risus tristique montes metus elementum lacinia at. Justo
@@ -92,7 +97,9 @@ export default function Home() {
           initial={{ opacity: 0, translateY: "100px" }}
           animate={{ opacity: 100, translateY: "0px" }}
           transition={{ duration: 0.8 }}
-          className={"container col-span-12 justify-between flex py-[50px]"}
+          className={
+            "container col-span-12 justify-between items-center flex flex-col lg:flex-row gap-y-[30px] py-[50px]"
+          }
         >
           <Card
             image={"/icons/education.svg"}
@@ -117,17 +124,18 @@ export default function Home() {
           />
         </motion.div>
         <div
-          ref={ref}
-          className={"col-span-12 container flex items-center justify-between"}
+          className={
+            "col-span-12 container flex md:flex-row gap-y-4 flex-col items-center justify-between"
+          }
         >
           <RevealLeft>
             <Title>Sakson ta’lim muassasalari</Title>
           </RevealLeft>
           <RevealRight>
-            <div className={"flex gap-x-4"}>
+            <div className={"flex gap-x-4 items-center"}>
               <button
                 onClick={() => changeEducation("university")}
-                className={`uppercase text-lg font-bold ${
+                className={`uppercase lg:text-lg md:text-base text-sm font-bold ${
                   chooseEducation === "university"
                     ? "text-[#007C4C] border-b border-b-[#007C4C]"
                     : "text-[#000] border-b-0"
@@ -138,7 +146,7 @@ export default function Home() {
 
               <button
                 onClick={() => changeEducation("college")}
-                className={`uppercase text-lg font-bold ${
+                className={`uppercase lg:text-lg md:text-base text-sm font-bold ${
                   chooseEducation === "college"
                     ? "text-[#007C4C] border-b border-b-[#007C4C]"
                     : "text-[#000] border-b-0"
@@ -151,7 +159,11 @@ export default function Home() {
         </div>
         {chooseEducation === "university" ? (
           <div className={"col-span-12 container my-[30px] "}>
-            <Reveal className={"flex justify-between"}>
+            <Reveal
+              className={
+                "flex md:flex-row flex-col md:justify-between justify-center gap-y-4 items-center"
+              }
+            >
               <UniversityCards
                 image={"/images/university1.png"}
                 title={"Leyptsig universiteti"}
@@ -180,7 +192,11 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className={"col-span-12 container my-[30px] "}
           >
-            <Reveal className={"flex justify-between"}>
+            <Reveal
+              className={
+                "flex md:flex-row flex-col md:justify-between justify-center gap-y-4 items-center"
+              }
+            >
               <CollegeCards
                 image={"/images/university3.png"}
                 title={"Tu Chemnitz "}
@@ -229,15 +245,21 @@ export default function Home() {
         )}
       </section>
 
-      <section className={"mt-[70px] mb-[30px]"}>
-        <div ref={ref} className={"grid grid-cols-12 container"}>
-          <div className={"col-span-6"}>
+      <section
+        className={"mt-[70px] mb-[30px] text-center md:text-start px-[20px]"}
+      >
+        <div className={"grid grid-cols-12 container"}>
+          <div className={"md:col-span-6 col-span-12"}>
             <Reveal>
               <Title>Sakson ilmiy aloqasi haqida</Title>
             </Reveal>
 
             <RevealRight>
-              <p className={"my-[20px] font-semibold text-[#474747]"}>
+              <p
+                className={
+                  "my-[20px] lg:text-base md:text-sm text-xs font-semibold text-[#474747]"
+                }
+              >
                 Lorem ipsum dolor sit amet consectetur. Luctus non aliquet dolor
                 laoreet. Nisl diam ut nibh tempor eget ullamcorper. Non
                 hendrerit id nunc nibh vitae sed sit. Risus habitasse id
@@ -250,7 +272,11 @@ export default function Home() {
             </RevealRight>
 
             <RevealLeft>
-              <h3 className={"text-2xl font-philosopher font-bold"}>
+              <h3
+                className={
+                  "lg:text-2xl md:text-xl text-lg font-philosopher font-bold"
+                }
+              >
                 Ustunliklar
               </h3>
             </RevealLeft>
@@ -258,7 +284,7 @@ export default function Home() {
             <RevealRight>
               <ul
                 className={
-                  "list-disc ml-[20px] my-[20px] flex flex-col gap-y-2"
+                  "md:list-disc ml-[20px] my-[20px] lg:text-base md:text-sm text-xs flex flex-col gap-y-2"
                 }
               >
                 <li>Lorem ipsum dolor sit amet consectetur.</li>
@@ -280,7 +306,7 @@ export default function Home() {
       <section className={"pt-[70px] pb-[50px] bg-[#F7F7F7]"}>
         <div className={"grid grid-cols-12 container"}>
           <div className={"col-span-12"}>
-            <Reveal className={"col-span-12 "}>
+            <Reveal className={"col-span-12 text-center md:text-start"}>
               <Title>Saksoniya shaharlari</Title>
             </Reveal>
 
@@ -320,7 +346,7 @@ export default function Home() {
       <section className={"pt-[70px] pb-[50px]"}>
         <div className={"grid grid-cols-12 container"}>
           <div className={"col-span-12"}>
-            <Reveal>
+            <Reveal className={" text-center md:text-start"}>
               <Title>Qabul bo`yicha maslahatlar</Title>
             </Reveal>
           </div>

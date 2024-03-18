@@ -6,20 +6,37 @@ const Card = ({ image, title, desc }) => {
   return (
     <div
       className={
-        "w-[450px] min-h-[420px] text-center flex flex-col items-center   rounded-[6px] bg-[#fff] py-6 px-[16px]"
+        "xl:w-[450px] lg:w-[400px] w-[350px]  lg:min-h-[420px] md:min-h-[350px] min-h-[330px] text-center flex flex-col items-center   rounded-[6px] bg-[#fff] lg:py-6 md:py-8 py-10 px-[16px]"
       }
     >
-      <Image src={image} alt={"education"} width={96} height={96} />
+      <img
+        className={
+          "lg:w-[96px] lg:h-[96px] md:w-[80px] md:h-[80px] w-[70px] h-[70px]"
+        }
+        src={image}
+        alt={"education"}
+        width={96}
+        height={96}
+      />
 
       <h2
-        className={"text-2xl font-bold font-philosopher  uppercase my-[10px]"}
+        className={
+          "lg:text-2xl md:text-xl text-lg font-bold font-philosopher  uppercase my-[10px]"
+        }
       >
         {title}
       </h2>
 
-      <p className={"text-base mb-[30px]"}>{desc}</p>
+      <p className={"lg:text-base md:text-sm text-xs lg:mb-[30px] mb-[20px]"}>
+        {desc}
+      </p>
 
-      <Link href={"#"} className={"uppercase text-[#007C4C] font-bold"}>
+      <Link
+        href={"#"}
+        className={
+          "uppercase text-[#007C4C] lg:text-base md:text-sm text-xs font-bold"
+        }
+      >
         batafsil
       </Link>
     </div>

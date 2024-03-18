@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className={"bg-[#F7F7F7] pt-[70px] "}>
       <div className={"grid-cols-12 grid container gap-x-[30px] mb-[30px]"}>
-        <div className={"col-span-3 flex flex-col gap-y-4"}>
+        <div className={"lg:col-span-3 col-span-12 flex flex-col gap-y-4"}>
           <Image
             src={"/images/saxon_brand.png"}
             alt={"brand"}
@@ -20,7 +20,7 @@ const Footer = () => {
             Vitae vel diam est convallis cursus aliquet non quam.
           </p>
 
-          <div className={"  flex-col flex gap-y-2 text-sm"}>
+          <div className={" flex-col flex gap-y-2 text-sm"}>
             <Link href={"/"} className={"flex gap-x-2 items-center"}>
               <svg
                 width="24"
@@ -29,7 +29,7 @@ const Footer = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0_9_21)">
+                <g clipPath="url(#clip0_9_21)">
                   <path
                     d="M3 7C3 6.46957 3.21071 5.96086 3.58579 5.58579C3.96086 5.21071 4.46957 5 5 5H19C19.5304 5 20.0391 5.21071 20.4142 5.58579C20.7893 5.96086 21 6.46957 21 7V17C21 17.5304 20.7893 18.0391 20.4142 18.4142C20.0391 18.7893 19.5304 19 19 19H5C4.46957 19 3.96086 18.7893 3.58579 18.4142C3.21071 18.0391 3 17.5304 3 17V7Z"
                     stroke="#00965C"
@@ -84,7 +84,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className={"col-span-9 flex gap-x-[20px]"}>
+        <div
+          className={
+            "lg:col-span-9 col-span-12 flex lg:flex-row flex-col gap-x-[20px]"
+          }
+        >
           <div className="">
             <h4
               className={
