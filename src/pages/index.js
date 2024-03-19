@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   return (
-    <div className={"min-h-[100vh] md:px-4 px-0"}>
+    <div className={"min-h-[100vh] "}>
       <Header />
       <Menu active={1} />
       <div
@@ -310,23 +310,27 @@ export default function Home() {
               <Title>Saksoniya shaharlari</Title>
             </Reveal>
 
-            <div className={"flex flex-wrap gap-x-[30px]"}>
-              <Reveal>
+            <div
+              className={
+                "grid grid-cols-12 md:place-items-start place-items-center gap-x-[30px]"
+              }
+            >
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards title={"Drezden"} image={"/images/city1.png"} />
               </Reveal>
-              <Reveal>
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards title={"Leyptsig"} image={"/images/city2.png"} />
               </Reveal>
-              <Reveal>
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards title={"Frayberg"} image={"/images/city3.png"} />
               </Reveal>
-              <Reveal>
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards title={"Xemnits"} image={"/images/city4.png"} />
               </Reveal>
-              <Reveal>
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards title={"Zwickau"} image={"/images/city5.png"} />
               </Reveal>
-              <Reveal>
+              <Reveal classNames={"xl:col-span-4 lg:col-span-6 col-span-12"}>
                 <CityCards
                   title={"Zittau Gorlitz"}
                   image={"/images/city6.png"}
@@ -344,7 +348,7 @@ export default function Home() {
       </section>
 
       <section className={"pt-[70px] pb-[50px]"}>
-        <div className={"grid grid-cols-12 container"}>
+        <div className={"grid grid-cols-12 container place-items-center"}>
           <div className={"col-span-12"}>
             <Reveal className={" text-center md:text-start"}>
               <Title>Qabul bo`yicha maslahatlar</Title>
