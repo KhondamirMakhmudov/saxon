@@ -47,19 +47,20 @@ export const menuData = [
     url: "/nowadays",
     subMenu: [],
   },
+
+  {
+    id: 7,
+    title: "Bog'lanish",
+    url: "/contacts",
+    subMenu: [],
+  },
 ];
 
 const Menu = ({ active = 0 }) => {
   const { t } = useTransition();
 
   return (
-    <div className={"bg-[#00965C] md:block hidden relative  z-70 "}>
-      <div className={"left-0 bg-white w-1/2  h-full -z-0 absolute"}></div>
-      <div
-        className={"absolute inset-0 z-20  bg-no-repeat bg-center"}
-        style={{ backgroundImage: "url(/images/menu_bg_style.png)" }}
-      ></div>
-
+    <div className={"bg-[#00965C] md:block hidden relative  z-10 "}>
       <div
         className={
           " container z-50 items-center justify-between grid grid-cols-12"
@@ -81,7 +82,7 @@ const Menu = ({ active = 0 }) => {
 
         <ul
           className={
-            "col-span-8 bg-[#00965C] pb-[10px] h-full z-40 flex items-center gap-x-10  justify-end"
+            "col-span-8 bg-[#00965C] pb-[10px] h-full rounded-[6px] z-10 flex items-center gap-x-10  justify-end"
           }
         >
           {menuData.map((item) => (
