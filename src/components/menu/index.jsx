@@ -31,7 +31,7 @@ export const menuData = [
   {
     id: 4,
     title: "O’qishni rejalashtirish",
-    url: "/plan",
+    url: "/study-plan",
     filterUrl: "",
     subMenu: [],
   },

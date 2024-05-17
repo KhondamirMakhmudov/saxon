@@ -66,7 +66,7 @@ const Form = () => {
         ref={name}
         type={"text"}
         name={"FIO*"}
-        placeholder={"Ism-sharifingizni pochtangizni kiriting"}
+        placeholder={"Ism-sharifingizni kiriting"}
       />{" "}
       <br />
       <Input

@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Header from "@/components/header";
+import Menu from "@/components/menu";
+import Footer from "@/components/footer";
 
-const Index = ({children}) => {
-    return (
-        <div className={'relative'}>
-            {children}
-        </div>
-    );
+const Wrapper = ({ children }) => {
+  return (
+    <div className={""}>
+      <Header />
+      {children}
+      <Footer />
+    </div>
+  );
 };
 
-export default Index;
+export default Wrapper;
