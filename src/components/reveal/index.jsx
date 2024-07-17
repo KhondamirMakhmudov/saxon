@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-const Reveal = ({ children, className, classNames }) => {
+const Reveal = ({ duration = 0.9, children, className, classNames }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -22,7 +22,7 @@ const Reveal = ({ children, className, classNames }) => {
         }}
         initial={"hidden"}
         animate={mainControls}
-        transition={{ duration: 0.9, delay: 0.4 }}
+        transition={{ duration: duration, delay: 0.4 }}
         className={className}
       >
         {children}

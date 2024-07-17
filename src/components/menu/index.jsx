@@ -16,7 +16,7 @@ export const menuData = [
   {
     id: 2,
     title: "Biz haqimizda",
-    url: "/about-us",
+    url: "/about",
     filterUrl: "",
     subMenu: [],
   },
@@ -31,27 +31,20 @@ export const menuData = [
   {
     id: 4,
     title: "O’qishni rejalashtirish",
-    url: "/study-plan",
+    url: "/university",
     filterUrl: "",
     subMenu: [],
   },
   {
     id: 5,
     title: "Saksoniyada o’qish",
-    url: "/studying-in-saxon",
+    url: "/study-in-saxon",
     subMenu: [],
   },
   {
     id: 6,
     title: "Hozirgi",
     url: "/nowadays",
-    subMenu: [],
-  },
-
-  {
-    id: 7,
-    title: "Bog'lanish",
-    url: "/contacts",
     subMenu: [],
   },
 ];
@@ -90,7 +83,7 @@ const Menu = ({ active = 0 }) => {
               className={clsx(
                 "text-lg cursor-pointer font-philosopher text-[#C3C3C3]",
                 {
-                  "text-[#fff]": isEqual(get(item, "id"), active),
+                  "text-[#fff] underline": isEqual(get(item, "id"), active),
                 },
               )}
               key={get(item, "id")}

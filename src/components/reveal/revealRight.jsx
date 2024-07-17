@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-const RevealLeft = ({ children, className }) => {
+const RevealRight = ({ children, className, classNameTop }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -14,7 +14,7 @@ const RevealLeft = ({ children, className }) => {
   }, [isInView]);
 
   return (
-    <div ref={ref}>
+    <div className={classNameTop} ref={ref}>
       <motion.div
         variants={{
           hidden: { opacity: 0, x: 75 },
@@ -31,4 +31,4 @@ const RevealLeft = ({ children, className }) => {
   );
 };
 
-export default RevealLeft;
+export default RevealRight;

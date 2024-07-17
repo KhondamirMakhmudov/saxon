@@ -48,6 +48,7 @@ const Form = () => {
         },
       );
     }
+    event.currentTarget.reset();
 
     return console.log([enteredEmail, enteredName, enteredMessage]);
   };
