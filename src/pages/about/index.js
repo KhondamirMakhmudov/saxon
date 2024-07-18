@@ -7,6 +7,7 @@ import { get } from "lodash";
 import Footer from "@/components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Reveal from "@/components/reveal";
 
 const DUMMY_DATA = [
   {
@@ -104,7 +105,7 @@ const Index = () => {
                   className={"flex cursor-pointer items-center"}
                 >
                   <p
-                    className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    className={`${isOpenServices ? "text-[#00B06C]" : "text-[#494949]"}`}
                   >
                     Xizmatlar
                   </p>
@@ -117,7 +118,10 @@ const Index = () => {
                   />
                 </button>
                 {isOpenServices && (
-                  <ul
+                  <motion.ul
+                    initial={{ opacity: 0, translateY: "30px" }}
+                    animate={{ opacity: 100, translateY: "0px" }}
+                    transition={{ duration: 0.4 }}
                     className={`!text-[14px] ml-[18px] flex flex-col gap-y-[10px] font-normal mt-[10px] font-lato `}
                   >
                     <li
@@ -127,17 +131,21 @@ const Index = () => {
                         O‘qishga bo‘yicha maslahat
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 3 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(3)}>
                         Universitet tanlash
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 4 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(4)}>
                         O‘qishga tayyorgarlik
                       </button>
                     </li>
-                  </ul>
+                  </motion.ul>
                 )}
               </li>
               <li className={"cursor-pointer"}>
@@ -145,7 +153,11 @@ const Index = () => {
                   onClick={toggleDropdownCollege}
                   className={"flex cursor-pointer items-center"}
                 >
-                  <p>Tayyorgarlik kolleji</p>
+                  <p
+                    className={`${isOpenCollege ? "text-[#00B06C]" : "text-[#494949]"}`}
+                  >
+                    Tayyorgarlik kolleji
+                  </p>
                   <Image
                     className={`${isOpenCollege ? "rotate-0" : "rotate-180"} transform transition-transform`}
                     src={"/icons/vector-down.svg"}
@@ -156,47 +168,68 @@ const Index = () => {
                 </button>
 
                 {isOpenCollege && (
-                  <ul
+                  <motion.ul
+                    initial={{ opacity: 0, translateY: "30px" }}
+                    animate={{ opacity: 100, translateY: "0px" }}
+                    transition={{ duration: 0.4 }}
                     className={
                       "!text-[14px] ml-[18px] flex flex-col gap-y-[10px] font-normal mt-[10px] font-lato"
                     }
                   >
-                    <li>
+                    <li
+                      className={`${tabs === 5 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(5)}>
                         Tayyorlov kolleji haqida
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 6 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(6)}>
                         Ro‘yhatdan o‘tish
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 7 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(7)}>
                         Kurs mazmuni
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 8 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(8)}>Voqealar</button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 9 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(9)}>
                         Kurs to‘lovlari
                       </button>
                     </li>
-                    <li>
+                    <li
+                      className={`${tabs === 10 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    >
                       <button onClick={() => selectPage(10)}>
                         Baholash testi
                       </button>
                     </li>
-                  </ul>
+                  </motion.ul>
                 )}
               </li>
 
-              <li className={"cursor-pointer"}>
+              <li
+                className={`${tabs === 11 ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
+              >
                 <button onClick={() => selectPage(11)}>Aloqa</button>
               </li>
-              <li className={"cursor-pointer"}>Sharh</li>
+              <li
+                className={`${tabs === 12 ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
+              >
+                <button onClick={() => selectPage(12)}>Sharh</button>
+              </li>
             </ul>
           </div>
 
@@ -205,7 +238,12 @@ const Index = () => {
               <Title>Sakson ilmiy aloqasi haqida</Title>
 
               <div className={"grid grid-cols-12 gap-x-[30px] mt-[30px]"}>
-                <div className={"col-span-5"}>
+                <motion.div
+                  className={"col-span-5"}
+                  initial={{ opacity: 0, translateX: "-100px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <p className={"text-[#5A5A5A]"}>
                     Sakson ilmiy aloqasi Saksoniyada ilmiy hamkorlik va
                     innovatsiyalarni rivojlantirishga qaratilgan tashabbusdir.
@@ -222,17 +260,22 @@ const Index = () => {
                     sanoat hamkorlari o&apos;rtasida bilim va tajriba
                     almashishni osonlashtiradi.
                   </p>
-                </div>
-                <div className={"col-span-7"}>
+                </motion.div>
+                <motion.div
+                  className={"col-span-7"}
+                  initial={{ opacity: 0, translateX: "100px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <Image
                     src={"/images/img-about-saxon.png"}
                     alt={"img-about-saxon"}
                     width={570}
                     height={350}
                   />
-                </div>
+                </motion.div>
 
-                <div className={"col-span-12 mt-[30px]"}>
+                <Reveal duration={0.2} classNames={"col-span-12 mt-[30px]"}>
                   <p>
                     Dastur ilmiy nashrlar sifatini yaxshilashga va fanning
                     ta&apos;lim dasturlariga integratsiyalashuviga yordam
@@ -245,39 +288,55 @@ const Index = () => {
                     texnologiyalari, madaniy va gumanitar fanlar kabi turli
                     ilmiy sohalardagi tadqiqotlarni qo&apos;llab-quvvatlaydi.
                   </p>
-                </div>
+                </Reveal>
 
-                <h2
-                  className={
-                    "font-bold text-[24px] font-philosopher uppercase col-span-12 my-[50px]"
-                  }
-                >
-                  Ustunliklarimiz
-                </h2>
-
-                {DUMMY_DATA.map((item) => (
-                  <div
-                    key={get(item, "id")}
+                <Reveal duration={0.3} className={"col-span-12"}>
+                  <h2
                     className={
-                      "lg:col-span-6 col-span-12 shadow-md mb-[30px] rounded-r-[10px]  border-l-[4px] p-[25px]  border-[#00965C]"
+                      "font-bold text-[24px] font-philosopher uppercase  mt-[50px] mb-[30px]"
                     }
                   >
-                    <h3
+                    Ustunliklarimiz
+                  </h2>
+                </Reveal>
+
+                <div className={"col-span-12"}>
+                  <Reveal duration={0.1}>
+                    <div
                       className={
-                        "font-bold text-lg font-philosopher uppercase mb-[20px]"
+                        "grid grid-cols-12 gap-x-[30px] gap-y-[30px] mb-[50px]"
                       }
                     >
-                      {get(item, "title")}
-                    </h3>
+                      {DUMMY_DATA.map((item) => (
+                        <div
+                          key={get(item, "id")}
+                          className={
+                            "lg:col-span-6 col-span-12 shadow-md  rounded-r-[10px]  border-l-[4px] p-[25px]  border-[#00965C]"
+                          }
+                        >
+                          <Reveal duration={0.3}>
+                            <h3
+                              className={
+                                "font-bold text-lg font-philosopher uppercase mb-[20px]"
+                              }
+                            >
+                              {get(item, "title")}
+                            </h3>
 
-                    <p>{get(item, "description")}</p>
-                  </div>
-                ))}
-                <div
-                  className={
-                    "col-span-12 w-full h-[530px] bg-gray-400 mb-[70px] rounded-[10px]"
-                  }
-                ></div>
+                            <p>{get(item, "description")}</p>
+                          </Reveal>
+                        </div>
+                      ))}
+                    </div>
+                  </Reveal>
+                </div>
+                <Reveal classNames={"col-span-12"}>
+                  <div
+                    className={
+                      " w-full h-[530px] bg-gray-400 mb-[70px] rounded-[10px]"
+                    }
+                  ></div>
+                </Reveal>
               </div>
             </div>
           )}
@@ -288,7 +347,12 @@ const Index = () => {
               </Title>
 
               <div className={"grid grid-cols-12 gap-x-[30px] mt-[30px]"}>
-                <div className={"col-span-5"}>
+                <motion.div
+                  className={"col-span-5"}
+                  initial={{ opacity: 0, translateX: "-100px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.7 }}
+                >
                   <p className={"text-[#5A5A5A]"}>
                     Sakson ilmiy aloqasi Saksoniyada ilmiy hamkorlik va
                     innovatsiyalarni rivojlantirishga qaratilgan tashabbusdir.
@@ -305,17 +369,22 @@ const Index = () => {
                     sanoat hamkorlari o&apos;rtasida bilim va tajriba
                     almashishni osonlashtiradi.
                   </p>
-                </div>
-                <div className={"col-span-7"}>
+                </motion.div>
+                <motion.div
+                  className={"col-span-7"}
+                  initial={{ opacity: 0, translateX: "100px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.7 }}
+                >
                   <Image
                     src={"/images/img2.png"}
                     alt={"img-about-saxon"}
                     width={570}
                     height={350}
                   />
-                </div>
+                </motion.div>
 
-                <div className={"col-span-12"}>
+                <Reveal duration={0.3} classNames={"col-span-12"}>
                   <p className={"text-[#5A5A5A] mt-[15px]"}>
                     Maslahatchilar tegishli mutaxassislik va universitetni
                     tanlash bo&apos;yicha individual ko&apos;rsatmalar beradi,
@@ -338,66 +407,72 @@ const Index = () => {
                     arizalar va intervyular jarayonini osonlashtirishga imkon
                     beradi.
                   </p>
-                </div>
+                </Reveal>
 
-                <div className={"col-span-12 my-[50px]"}>
-                  <h2
-                    className={
-                      "font-bold text-[24px] font-philosopher uppercase  "
-                    }
-                  >
-                    Maslahat olish uchun murojaat qoldiring
-                  </h2>
+                <div className={"col-span-12 mt-[50px] mb-[70px]"}>
+                  <Reveal duration={0.2}>
+                    <h2
+                      className={
+                        "font-bold text-[24px] mb-[10px] font-philosopher uppercase  "
+                      }
+                    >
+                      Maslahat olish uchun murojaat qoldiring
+                    </h2>
+                  </Reveal>
 
-                  <p className={"text-[#5A5A5A]"}>
-                    Saksoniya universitetlariga kirish uchun maslahat olishga
-                    o‘z murojaatingizni batafsil yozib yuboring. Tez orada siz
-                    bilan bog‘lanishadi.
-                  </p>
+                  <Reveal duration={0.3}>
+                    <p className={"text-[#5A5A5A]"}>
+                      Saksoniya universitetlariga kirish uchun maslahat olishga
+                      o‘z murojaatingizni batafsil yozib yuboring. Tez orada siz
+                      bilan bog‘lanishadi.
+                    </p>
+                  </Reveal>
 
-                  <form className={"max-w-[690px] mt-[30px]"}>
-                    <div className={"flex justify-between mb-[30px]"}>
+                  <Reveal duration={0.4}>
+                    <form className={"max-w-[690px] mt-[30px]"}>
+                      <div className={"flex justify-between mb-[30px]"}>
+                        <input
+                          type={"text"}
+                          className={
+                            "border border-[#007C4C] rounded-[6px] max-w-[330px] w-full  px-4 py-[12px]"
+                          }
+                          placeholder={"F.I.SH."}
+                        />
+
+                        <input
+                          type={"email"}
+                          className={
+                            "border border-[#007C4C] rounded-[6px] max-w-[330px] w-full  px-4 py-[12px]"
+                          }
+                          placeholder={"Email"}
+                        />
+                      </div>
+
                       <input
                         type={"text"}
                         className={
-                          "border border-[#007C4C] rounded-[6px] max-w-[330px] w-full  px-4 py-2"
+                          "border border-[#007C4C] rounded-[6px] mb-[30px] w-full  px-4 py-[12px]"
                         }
-                        placeholder={"F.I.SH."}
+                        placeholder={"Murojaat mavzusi"}
                       />
 
-                      <input
-                        type={"email"}
+                      <textarea
                         className={
-                          "border border-[#007C4C] rounded-[6px] max-w-[330px] w-full  px-4 py-2"
+                          "border border-[#007C4C] rounded-[6px] mb-[30px]  w-full  px-4 py-2 "
                         }
-                        placeholder={"Email"}
-                      />
-                    </div>
+                        placeholder={"Murojaat matni"}
+                        rows={8}
+                      ></textarea>
 
-                    <input
-                      type={"text"}
-                      className={
-                        "border border-[#007C4C] rounded-[6px] mb-[30px] w-full  px-4 py-2"
-                      }
-                      placeholder={"Murojaat mavzusi"}
-                    />
-
-                    <textarea
-                      className={
-                        "border border-[#007C4C] rounded-[6px] mb-[30px]  w-full  px-4 py-2 "
-                      }
-                      placeholder={"Murojaat matni"}
-                      rows={8}
-                    ></textarea>
-
-                    <button
-                      className={
-                        "bg-[#00965C] text-white max-w-[210px] w-full py-3 rounded-[6px] uppercase hover:bg-[#00AF6C] transition-all duration-300 "
-                      }
-                    >
-                      Yuborish
-                    </button>
-                  </form>
+                      <button
+                        className={
+                          "bg-[#00965C] text-white max-w-[210px] w-full py-3 rounded-[6px] uppercase hover:bg-[#00AF6C] transition-all duration-300 "
+                        }
+                      >
+                        Yuborish
+                      </button>
+                    </form>
+                  </Reveal>
                 </div>
               </div>
             </div>
@@ -484,9 +559,7 @@ const Index = () => {
                     <li>
                       <button
                         onClick={toggleAccordion}
-                        className={
-                          "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#D6F2E7]"
-                        }
+                        className={`flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] ${isOpen ? "bg-[#D6F2E7]" : "bg-[#F7F7F7] transition-all duration-400"}`}
                       >
                         <Image
                           src={"/icons/vector-down.svg"}
@@ -505,7 +578,12 @@ const Index = () => {
                       </button>
 
                       {isOpen && (
-                        <div className={"text=[#5A5A5A] my-[20px]"}>
+                        <motion.div
+                          className={"text=[#5A5A5A] my-[20px]"}
+                          initial={{ opacity: 0, translateY: "100px" }}
+                          animate={{ opacity: 100, translateY: "0px" }}
+                          transition={{ duration: 0.7 }}
+                        >
                           <p>
                             Universitetlar birinchi navbatda ilmiy ishlarga
                             yo&apos;naltirilgan va tadqiqotlar muhim rol
@@ -559,7 +637,7 @@ const Index = () => {
                               </Link>
                             </li>
                           </ul>
-                        </div>
+                        </motion.div>
                       )}
                     </li>
                     <li>
@@ -637,7 +715,12 @@ const Index = () => {
               <Title>O‘QISHGA TAYYORGARLIK</Title>
 
               <div className={"grid grid-cols-12 gap-x-[30px] mt-[30px]"}>
-                <div className={"col-span-5"}>
+                <motion.div
+                  className={"col-span-5"}
+                  initial={{ opacity: 0, translateX: "-50px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <p className={"text-[#5A5A5A]"}>
                     Saksoniya universitetlarida o&apos;qishga tayyorgarlik bir
                     necha muhim bosqichlarni o&apos;z ichiga oladi. Avvalo,
@@ -658,15 +741,20 @@ const Index = () => {
                     universitetlar qo&apos;shimcha testlar yoki topshiriqlarni
                     ham talab qilishi mumkin.
                   </p>
-                </div>
-                <div className={"col-span-7"}>
+                </motion.div>
+                <motion.div
+                  className={"col-span-7"}
+                  initial={{ opacity: 0, translateX: "50px" }}
+                  animate={{ opacity: 100, translateX: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <Image
                     src={"/images/img3.png"}
                     alt={"img-about-saxon"}
                     width={570}
                     height={350}
                   />
-                </div>
+                </motion.div>
 
                 <div
                   className={"col-span-12 text-[#5A5A5A] mt-[20px] mb-[50px]"}
@@ -830,8 +918,12 @@ const Index = () => {
             <div className={"col-span-9"}>
               <Title>Aloqa</Title>
 
-              <div className={"flex items-start justify-between"}>
-                <div>
+              <div className={"flex items-start justify-between mb-[70px]"}>
+                <motion.div
+                  initial={{ opacity: 0, translateY: "-70px" }}
+                  animate={{ opacity: 100, translateY: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <div>
                     <h4 className={"text-[20px] my-[20px]"}>Manzil</h4>
                     <p className={"text-[#5A5A5A]"}>
@@ -872,9 +964,14 @@ const Index = () => {
                       info@saxonscienceliaison.uz
                     </a>
                   </div>
-                </div>
+                </motion.div>
 
-                <form className={"max-w-[690px] "}>
+                <motion.form
+                  className={"max-w-[690px] "}
+                  initial={{ opacity: 0, translateY: "70px" }}
+                  animate={{ opacity: 100, translateY: "0px" }}
+                  transition={{ duration: 0.4 }}
+                >
                   <div>
                     <h4 className={"text-[20px] my-[20px]"}>
                       Murojaat qoldiring
@@ -923,13 +1020,19 @@ const Index = () => {
 
                   <button
                     className={
-                      "bg-[#00965C] text-white max-w-[210px] w-full py-3 rounded-[6px] uppercase hover:bg-[#00AF6C] transition-all duration-300 "
+                      "bg-[#00965C] text-white max-w-[210px] w-full py-3 rounded-[6px] uppercase hover:bg-[#00AF6C] transition-all duration-300"
                     }
                   >
                     Yuborish
                   </button>
-                </form>
+                </motion.form>
               </div>
+            </div>
+          )}
+
+          {tabs === 12 && (
+            <div className={"col-span-9"}>
+              <Title>Sharhlar</Title>
             </div>
           )}
         </div>
