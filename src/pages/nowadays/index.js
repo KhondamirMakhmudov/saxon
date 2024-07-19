@@ -8,10 +8,16 @@ import Reveal from "@/components/reveal";
 import RevealLeft from "@/components/reveal/revealLeft";
 import RevealRight from "@/components/reveal/revealRight";
 import Footer from "@/components/footer";
+import Link from "next/link";
 
 const Index = () => {
   const [isOpenCareer, setIsOpenCareer] = useState(false);
   const [tabs, setTabs] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
   const selectPage = (tab) => {
     setTabs(tab);
   };
@@ -39,7 +45,9 @@ const Index = () => {
               <li
                 className={`cursor-pointer ${tabs === 1 ? "text-[#00B06C]" : "text-[#494949]"}`}
               >
-                <button onClick={() => selectPage(1)}>Yaxshi sabablar</button>
+                <button onClick={() => selectPage(1)}>
+                  FAQ (ko‘p beriladigan savollar)
+                </button>
               </li>
               <li
                 className={`cursor-pointer ${isOpenCareer ? "text-[#00B06C]" : "text-[#494949]"}`}
@@ -51,241 +59,231 @@ const Index = () => {
                   <p
                     className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
                   >
-                    O‘qishdan keyin karyera
+                    Uchrashuvlar (vebinar, maslahatlar)
                   </p>
-                  <Image
-                    className={`${isOpenCareer ? "rotate-0" : "rotate-180"} ${tabs === 2 ? "fill-[#00B06C]" : "fill-[#494949]"} transform transition-transform`}
-                    src={"/icons/vector-down.svg"}
-                    alt={"down"}
-                    width={16}
-                    height={16}
-                  />
                 </button>
-                {isOpenCareer && (
-                  <ul
-                    className={`!text-[14px] ml-[18px] flex flex-col gap-y-[10px] font-normal mt-[10px] font-lato `}
-                  >
-                    <li
-                      className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
-                    >
-                      <button onClick={() => selectPage(3)}>
-                        Yashash (transport, telefon va h.z.)
-                      </button>
-                    </li>
-                  </ul>
-                )}
               </li>
             </ul>
           </div>
 
           {tabs === 1 && (
             <div className={"col-span-9"}>
-              <Title>Yaxshi sabablar</Title>
+              <Title>FAQ (ko‘p beriladigan savollar)</Title>
 
-              <div className={"grid grid-cols-12 gap-x-[30px] mt-[30px]"}>
-                <motion.div
-                  className={"col-span-5"}
-                  initial={{ opacity: 0, translateX: "-100px" }}
-                  animate={{ opacity: 100, translateX: "0px" }}
-                  transition={{ duration: 0.7 }}
-                >
-                  <p className={"text-[#5A5A5A]"}>
-                    Saksoniya universitetlarida o&apos;qish ko&apos;plab
-                    afzalliklarni beradi. Saksoniya universitetlari
-                    ta&apos;limning yuqori sifati va diplomlarning xalqaro
-                    miqyosda tan olinishi bilan mashhur bo&apos;lib, bu keng
-                    martaba imkoniyatlarini ochib beradi. Mintaqadagi
-                    universitetlar turli xil fanlarni qamrab oladigan turli xil
-                    o&apos;quv dasturlarini taklif qilishadi, bu esa talabalarga
-                    o&apos;zlarining qiziqishlari va martaba maqsadlariga mos
-                    keladigan yo&apos;nalishni tanlashga imkon beradi.
-                  </p>
-
-                  <p className={"text-[#5A5A5A] mt-[20px]"}>
-                    Saksoniya universitetlari, shuningdek, talabalarga zamonaviy
-                    laboratoriyalar, tadqiqot markazlari va ilmiy loyihalardan
-                    foydalanish imkoniyatini berish orqali ilmiy tadqiqotlar va
-                    innovatsiyalarni faol qo&apos;llab-quvvatlamoqda. Bu ilmiy
-                    faoliyat bilan shug&apos;ullanishni va ilg&apos;or
-                    tadqiqotlar ustida ishlashni istagan talabalar uchun ajoyib
-                    imkoniyatlar yaratadi.
-                  </p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, translateX: "100px" }}
-                  animate={{ opacity: 100, translateX: "0px" }}
-                  transition={{ duration: 0.7 }}
-                  className={"col-span-7"}
-                >
-                  <Image
-                    src={"/images/img6.png"}
-                    alt={"img6"}
-                    width={570}
-                    height={350}
-                  />
-                </motion.div>
-
-                <div className={"col-span-12 text-[#5A5A5A]"}>
-                  <Reveal duration={0.5}>
-                    <p className={"mt-[20px]"}>
-                      Xalqaro hamkorlik va almashinuv dasturlari orqali
-                      talabalar xalqaro tajribaga ega bo&apos;lishlari va
-                      o&apos;zlarining professional tarmoqlarini
-                      kengaytirishlari mumkin. Zamonaviy o&apos;quv va turar-joy
-                      binolari, kutubxonalar va madaniy markazlarni o&apos;z
-                      ichiga olgan rivojlangan universitet infratuzilmasi ham
-                      muhim jihatdir.
-                    </p>
-
-                    <p className={"mt-[20px]"}>
-                      Saksoniyada ta&apos;lim arzon narxga ega va talabalarni
-                      qo&apos;llab-quvvatlash uchun turli xil stipendiyalar va
-                      moliyaviy dasturlar mavjud. Drezden va Leypsig kabi sakson
-                      shaharlari yuqori sifatli hayot, boy madaniy hayot va
-                      ko&apos;plab dam olish imkoniyatlarini taklif etadi.
-                    </p>
-
-                    <p className={"mt-[20px]"}>
-                      Universitetlarning professor-o&apos;qituvchilari tajribali
-                      mutaxassislar va olimlarni o&apos;z ichiga oladi, bu
-                      o&apos;qitishning yuqori darajasini va tegishli bilim va
-                      ko&apos;nikmalarni olish imkoniyatini kafolatlaydi.
-                      Universitetlar, shuningdek, talabalarga qimmatli tajriba
-                      orttirish va mehnat bozorida raqobatbardoshligini
-                      oshirishga yordam beradigan amaliy mashg&apos;ulotlar va
-                      amaliyotlarga e&apos;tibor qaratadilar.
-                    </p>
-
-                    <p className={"mt-[20px]"}>
-                      Shunday qilib, Saksoniya universitetlarida o&apos;qish
-                      yuqori sifatli ta&apos;lim, mavjudlik, xalqaro
-                      imkoniyatlar va rivojlangan infratuzilmani birlashtirib,
-                      mintaqani butun dunyo talabalari uchun jozibador qiladi.
-                    </p>
-                    <h2
-                      className={
-                        "font-bold text-[24px] text-black font-philosopher uppercase col-span-12 my-[50px]"
-                      }
-                    >
-                      afzalliklar
-                    </h2>
-
-                    <p className={""}>
-                      Saksoniya universitetlarida o&apos;qish ko&apos;plab
-                      afzalliklarga ega:
-                    </p>
-                  </Reveal>
-
-                  <div
-                    className={"grid grid-cols-12 gap-x-[30px] mt-[20px]" + ""}
+              <ul className={"flex flex-col gap-y-[20px] my-[30px]"}>
+                <li>
+                  <button
+                    onClick={toggleAccordion}
+                    className={`flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] ${isOpen ? "bg-[#D6F2E7]" : "bg-[#F7F7F7] transition-all duration-400"}`}
                   >
-                    <RevealLeft classNameTop={"col-span-6"}>
-                      <ul className={"col-span-6 list-disc ml-[30px]"}>
-                        <li className={"text-[#00965C]"}>
-                          Ta&apos;limning yuqori sifati:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            Saksoniya universitetlari o&apos;zlarining yuqori
-                            akademik standartlari va diplomlarni xalqaro
-                            miqyosda tan olishlari bilan mashhur bo&apos;lib, bu
-                            keng martaba imkoniyatlarini ochib beradi.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Dasturlarning xilma-xilligi:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            universitetlar talabalarga o&apos;z qiziqishlari va
-                            martaba maqsadlariga mos keladigan yo&apos;nalishni
-                            tanlashga imkon beradigan turli xil fanlar
-                            bo&apos;yicha turli xil ta&apos;lim dasturlarini
-                            taklif qilishadi.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Ilmiy tadqiqotlarni qo&apos;llab-quvvatlash:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            universitetlar talabalarga zamonaviy
-                            laboratoriyalar, tadqiqot markazlari va ilmiy
-                            loyihalardan foydalanish imkoniyatini berish orqali
-                            ilmiy tadqiqotlar va innovatsiyalarni faol
-                            qo&apos;llab-quvvatlamoqda.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Xalqaro sheriklik:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            xalqaro sheriklik va almashinuv dasturlari orqali
-                            talabalar xalqaro tajribaga ega bo&apos;lishlari,
-                            professional tarmoqlarini kengaytirishlari va global
-                            mehnat bozorida raqobatbardoshligini oshirishlari
-                            mumkin.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Rivojlangan infratuzilma:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            universitetlar zamonaviy o&apos;quv va yashash
-                            joylari, kutubxonalar va madaniy markazlarga ega
-                            bo&apos;lib, o&apos;qish va yashash uchun qulay
-                            sharoitlarni ta&apos;minlaydi.
-                          </span>
-                        </li>
-                      </ul>
-                    </RevealLeft>
-                    <RevealRight classNameTop={"col-span-6"}>
-                      <ul className={"col-span-6 list-disc ml-[30px]"}>
-                        <li className={"text-[#00965C]"}>
-                          Ta&apos;limning arzonligi:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            Saksoniyada ta&apos;lim boshqa mintaqalarga nisbatan
-                            nisbatan arzon va talabalarni
-                            qo&apos;llab-quvvatlash uchun turli xil
-                            stipendiyalar va moliyaviy dasturlar mavjud.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Amaliy mashg&apos;ulotlar va amaliyotlar:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            universitetlar amaliy mashg&apos;ulotlar va
-                            amaliyotlarga e&apos;tibor berishadi, bu esa
-                            talabalarga qimmatli tajriba orttirishga va mehnat
-                            bozorida raqobatbardoshligini oshirishga yordam
-                            beradi.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Yuqori hayot sifati:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            Drezden va Leypsig kabi sakson shaharlari yuqori
-                            hayot sifati, boy madaniy hayot, ko&apos;plab dam
-                            olish imkoniyatlari va qulay transport aloqalarini
-                            taklif etadi.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Ta&apos;limning yuqori sifati:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            Saksoniya universitetlarida tajribali mutaxassislar
-                            va olimlar mavjud bo&apos;lib, ular
-                            o&apos;qitishning yuqori darajasi va tegishli bilim
-                            va ko&apos;nikmalarga ega bo&apos;lish imkoniyatini
-                            kafolatlaydi.
-                          </span>
-                        </li>
-                        <li className={"text-[#00965C]"}>
-                          Chet ellik talabalarni qo&apos;llab-quvvatlash:{" "}
-                          <span className={"text-[#5A5A5A]"}>
-                            universitetlar xalqaro talabalar uchun turli xil
-                            dasturlar va qo&apos;llab-quvvatlash xizmatlarini
-                            taklif qilishadi, bu ularga yangi madaniy va
-                            akademik muhitga muvaffaqiyatli moslashish va
-                            integratsiyalashishga yordam beradi.
-                          </span>
-                        </li>
-                      </ul>
-                    </RevealRight>
-                  </div>
-                </div>
-              </div>
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                      className={`${!isOpen ? "rotate-0" : "rotate-180"} transition-transform duration-300`}
+                    />
+                    <p className={"text-lg font-bold"}>
+                      Qaysi dasturlar va mutaxassisliklarni o&apos;rganish
+                      mumkin?
+                    </p>
+                  </button>
+
+                  {isOpen && (
+                    <motion.div
+                      className={"text=[#5A5A5A] my-[20px]"}
+                      initial={{ opacity: 0, translateY: "100px" }}
+                      animate={{ opacity: 100, translateY: "0px" }}
+                      transition={{ duration: 0.7 }}
+                    >
+                      <p>
+                        Saksoniyadagi Leypsig universiteti turli xil ta&apos;lim
+                        yo&apos;nalishlari va dasturlarini taklif etadi,
+                        jumladan: <br />{" "}
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          Gumanitar fanlar
+                        </span>
+                        : adabiyot, tillar, falsafa, san&apos;at tarixi, musiqa,
+                        teatr san&apos;ati.
+                        <br />
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          Tabiiy fanlar
+                        </span>{" "}
+                        : Biologiya, kimyo, fizika, matematika, geografiya.
+                        <br />
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          Tibbiyot va sog&apos;liqni saqlash
+                        </span>{" "}
+                        : tibbiyot fakulteti, tibbiy biotexnologiya,
+                        sog&apos;liqni saqlash va sog&apos;liqni saqlashni
+                        boshqarish.
+                        <br />
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          Huquq va ijtimoiy fanlar
+                        </span>{" "}
+                        : Huquqshunoslik, sotsiologiya, siyosatshunoslik,
+                        iqtisodiyot, menejment, psixologiya, pedagogika. <br />
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          Muhandislik fanlari va texnologiyalari
+                        </span>{" "}
+                        : muhandislik, informatika, Materialshunoslik,
+                        elektrotexnika, mashinasozlik.{" "}
+                        <span className={"text-[#5A5A5A] font-bold"}>
+                          {" "}
+                          <br />
+                          San&apos;at va dizayn
+                        </span>{" "}
+                        : arxitektura, dizayn, vizual san&apos;at, media va
+                        aloqa.
+                      </p>
+                    </motion.div>
+                  )}
+                </li>
+                <li>
+                  <button
+                    className={`flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]`}
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={"  text-lg font-bold"}>
+                      Qabul talablari qanday (baholar, til sertifikatlari,
+                      portfellar)?
+                    </p>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7] "
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={"text-lg font-bold"}>
+                      Moliyaviy yordam va stipendiyalar uchun qanday
+                      imkoniyatlar mavjud?
+                    </p>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      O&apos;qitishning qaysi formati(ma&apos;ruzalar,
+                      seminarlar, amaliy mashg&apos;ulotlar)?
+                    </p>
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      Xalqaro almashinuv va ikki tomonlama diplomlar uchun
+                      imkoniyatlar bormi?
+                    </p>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      O&apos;qituvchilarning malakasi va tajribasi qanday?
+                    </p>
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      Universitetning infratuzilmasi (kutubxonalar,
+                      laboratoriyalar, sport inshootlari) qanday?
+                    </p>
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      Tadqiqot ishlari yoki loyihalarda ishtirok etish uchun
+                      imkoniyatlar bormi?
+                    </p>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    className={
+                      "flex items-center gap-x-[10px]  w-full p-2 rounded-[6px] bg-[#F7F7F7]"
+                    }
+                  >
+                    <Image
+                      src={"/icons/vector-down.svg"}
+                      alt={"down"}
+                      width={24}
+                      height={24}
+                    />
+                    <p className={" text-lg font-bold"}>
+                      Talabalar shaharchasida va shaharda talabalar hayoti
+                      qanday?
+                    </p>
+                  </button>
+                </li>
+              </ul>
             </div>
           )}
 
