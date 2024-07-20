@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ image, title, desc }) => {
+const Card = ({ image, title, desc, url = "#" }) => {
   return (
     <div
       className={
@@ -32,7 +32,7 @@ const Card = ({ image, title, desc }) => {
       </p>
 
       <Link
-        href={"#"}
+        href={url}
         className={
           "uppercase text-[#007C4C] lg:text-base md:text-sm text-xs font-bold"
         }

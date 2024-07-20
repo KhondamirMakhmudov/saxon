@@ -104,6 +104,7 @@ export default function Home() {
           <Card
             image={"/icons/education.svg"}
             title={"Saksoniya\n universitetlarida ta’lim"}
+            url={"about?tab=saxon-haqida"}
             desc={
               "Lorem ipsum dolor sit amet consectetur. At vitae lectus eleifend elit vulputate lectus nulla sagittis. Convallis risus convallis in in mi duis purus ultricies. Rutrum lectus vel lacus aliquet interdum semper."
             }
@@ -111,6 +112,7 @@ export default function Home() {
           <Card
             image={"/icons/choose_university.svg"}
             title={"Universitet tanlash"}
+            url={"/about?tab=Universitet%20tanlash"}
             desc={
               "Lorem ipsum dolor sit amet consectetur. At vitae lectus eleifend elit vulputate lectus nulla sagittis. Convallis risus convallis in in mi duis purus ultricies. Rutrum lectus vel lacus aliquet interdum semper."
             }
@@ -118,6 +120,7 @@ export default function Home() {
           <Card
             image={"/icons/prepair.svg"}
             title={"O‘qishga tayyorgarlik"}
+            url={"/about?tab=O‘qishga%20tayyorgarlik"}
             desc={
               "Lorem ipsum dolor sit amet consectetur. At vitae lectus eleifend elit vulputate lectus nulla sagittis. Convallis risus convallis in in mi duis purus ultricies. Rutrum lectus vel lacus aliquet interdum semper."
             }
@@ -295,7 +298,7 @@ export default function Home() {
             </RevealRight>
 
             <RevealBottom>
-              <Button>read more</Button>
+              <Button url={"/about?tab=saxon-haqida"}>read more</Button>
             </RevealBottom>
           </div>
 

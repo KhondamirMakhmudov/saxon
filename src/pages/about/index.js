@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "@/components/title";
 import Header from "@/components/header";
 import Menu from "@/components/menu";
@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Reveal from "@/components/reveal";
+import { useRouter } from "next/router";
 
 const DUMMY_DATA = [
   {
@@ -49,19 +50,33 @@ const DUMMY_DATA = [
 ];
 
 const Index = () => {
+  const router = useRouter();
+  const { tab } = router.query;
   const [isOpenServices, setIsOpenServices] = useState(false);
   const [isOpenCollege, setIsOpenCollege] = useState(false);
   const [tabs, setTabs] = useState(1);
+  const [activeTab, setActiveTab] = useState("saxon-haqida");
   const [accordion, setAccordion] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdownServices = () => {
     setIsOpenServices(!isOpenServices);
+    setActiveTab("O‘qishga bo‘yicha maslahat");
   };
 
   const selectPage = (tab) => {
     setTabs(tab);
   };
+
+  const handleTabClick = (tab) => {
+    router.push(`/about?tab=${tab}`);
+  };
+
+  useEffect(() => {
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [tab]);
 
   const selectAccordion = (item) => {
     setAccordion(item);
@@ -91,9 +106,12 @@ const Index = () => {
               className={"flex flex-col gap-y-[20px] p-[20px] text-[#494949]"}
             >
               <li
-                className={`cursor-pointer ${tabs === 1 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                className={`cursor-pointer ${activeTab === "saxon-haqida" ? "text-[#00B06C]" : "text-[#494949]"}`}
               >
-                <button onClick={() => selectPage(1)}>
+                <button
+                  id={"tab-saxon"}
+                  onClick={() => handleTabClick("saxon-haqida")}
+                >
                   Sakson ilmiy aloqasi haqida
                 </button>
               </li>
@@ -110,7 +128,7 @@ const Index = () => {
                     Xizmatlar
                   </p>
                   <Image
-                    className={`${isOpenServices ? "rotate-0" : "rotate-180"} ${tabs === 2 ? "fill-[#00B06C]" : "fill-[#494949]"} transform transition-transform`}
+                    className={`${isOpenServices ? "rotate-0" : "rotate-180"} ${activeTab === "Xizmatlar" ? "fill-[#00B06C]" : "fill-[#494949]"} transform transition-transform`}
                     src={"/icons/vector-down.svg"}
                     alt={"down"}
                     width={16}
@@ -125,23 +143,31 @@ const Index = () => {
                     className={`!text-[14px] ml-[18px] flex flex-col gap-y-[10px] font-normal mt-[10px] font-lato `}
                   >
                     <li
-                      className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "O‘qishga bo‘yicha maslahat" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(2)}>
+                      <button
+                        onClick={() =>
+                          handleTabClick("O‘qishga bo‘yicha maslahat")
+                        }
+                      >
                         O‘qishga bo‘yicha maslahat
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 3 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Universitet tanlash" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(3)}>
+                      <button
+                        onClick={() => handleTabClick("Universitet tanlash")}
+                      >
                         Universitet tanlash
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 4 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "O‘qishga tayyorgarlik" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(4)}>
+                      <button
+                        onClick={() => handleTabClick("O‘qishga tayyorgarlik")}
+                      >
                         O‘qishga tayyorgarlik
                       </button>
                     </li>
@@ -177,42 +203,50 @@ const Index = () => {
                     }
                   >
                     <li
-                      className={`${tabs === 5 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Tayyorlov kolleji haqida" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(5)}>
+                      <button
+                        onClick={() =>
+                          handleTabClick("Tayyorlov kolleji haqida")
+                        }
+                      >
                         Tayyorlov kolleji haqida
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 6 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Ro‘yhatdan o‘tish" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(6)}>
+                      <button
+                        onClick={() => handleTabClick("Ro‘yhatdan o‘tish")}
+                      >
                         Ro‘yhatdan o‘tish
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 7 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Kurs mazmuni" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(7)}>
+                      <button onClick={() => handleTabClick("Kurs mazmuni")}>
                         Kurs mazmuni
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 8 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Voqealar" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(8)}>Voqealar</button>
+                      <button onClick={() => handleTabClick("Voqealar")}>
+                        Voqealar
+                      </button>
                     </li>
                     <li
-                      className={`${tabs === 9 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Kurs to‘lovlari" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(9)}>
+                      <button onClick={() => handleTabClick("Kurs to‘lovlari")}>
                         Kurs to‘lovlari
                       </button>
                     </li>
                     <li
-                      className={`${tabs === 10 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Baholash testi" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(10)}>
+                      <button onClick={() => handleTabClick("Baholash testi")}>
                         Baholash testi
                       </button>
                     </li>
@@ -221,19 +255,19 @@ const Index = () => {
               </li>
 
               <li
-                className={`${tabs === 11 ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
+                className={`${activeTab === "Aloqa" ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
               >
-                <button onClick={() => selectPage(11)}>Aloqa</button>
+                <button onClick={() => handleTabClick("Aloqa")}>Aloqa</button>
               </li>
               <li
-                className={`${tabs === 12 ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
+                className={`${activeTab === "Sharh" ? "text-[#00B06C]" : "text-[#494949]"} cursor-pointer`}
               >
-                <button onClick={() => selectPage(12)}>Sharh</button>
+                <button onClick={() => handleTabClick("Sharh")}>Sharh</button>
               </li>
             </ul>
           </div>
 
-          {tabs === 1 && (
+          {activeTab === "saxon-haqida" && (
             <div id={"saxon-scientific-connection"} className={"col-span-9"}>
               <Title>Sakson ilmiy aloqasi haqida</Title>
 
@@ -340,7 +374,7 @@ const Index = () => {
               </div>
             </div>
           )}
-          {tabs === 2 && (
+          {activeTab === "O‘qishga bo‘yicha maslahat" && (
             <div className={"col-span-9"}>
               <Title>
                 Sakson universitetlariga o‘qishga kirish bo’yicha maslahat
@@ -478,7 +512,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 3 && (
+          {activeTab === "Universitet tanlash" && (
             <div className={"col-span-9"}>
               <Title>Universitet tanlash</Title>
 
@@ -710,7 +744,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 4 && (
+          {activeTab === "O‘qishga tayyorgarlik" && (
             <div className={"col-span-9"}>
               <Title>O‘QISHGA TAYYORGARLIK</Title>
 
@@ -826,7 +860,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 5 && (
+          {activeTab === "Tayyorlov kolleji haqida" && (
             <div className={"col-span-9"}>
               <Title>Tayyorlov kolleji haqida</Title>
 
@@ -858,13 +892,13 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 6 && (
+          {activeTab === "Ro‘yhatdan o‘tish" && (
             <div className={"col-span-9"}>
               <Title>Ro‘yhatdan o‘tish</Title>
             </div>
           )}
 
-          {tabs === 7 && (
+          {activeTab === "Kurs mazmuni" && (
             <div className={"col-span-9"}>
               <Title>Kurs mazmuni</Title>
 
@@ -896,25 +930,25 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 8 && (
+          {activeTab === "Voqealar" && (
             <div className={"col-span-9"}>
               <Title>Voqealar</Title>
             </div>
           )}
 
-          {tabs === 9 && (
+          {activeTab === "Kurs to‘lovlari" && (
             <div className={"col-span-9"}>
               <Title>Kurs to‘lovlari</Title>
             </div>
           )}
 
-          {tabs === 10 && (
+          {activeTab === "Baholash testi" && (
             <div className={"col-span-9"}>
               <Title>Baholash testi</Title>
             </div>
           )}
 
-          {tabs === 11 && (
+          {activeTab === "Aloqa" && (
             <div className={"col-span-9"}>
               <Title>Aloqa</Title>
 
@@ -1030,7 +1064,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 12 && (
+          {activeTab === "Sharh" && (
             <div className={"col-span-9"}>
               <Title>Sharhlar</Title>
             </div>
