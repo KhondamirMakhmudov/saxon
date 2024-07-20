@@ -108,10 +108,7 @@ const Index = () => {
               <li
                 className={`cursor-pointer ${activeTab === "saxon-haqida" ? "text-[#00B06C]" : "text-[#494949]"}`}
               >
-                <button
-                  id={"tab-saxon"}
-                  onClick={() => handleTabClick("saxon-haqida")}
-                >
+                <button onClick={() => handleTabClick("saxon-haqida")}>
                   Sakson ilmiy aloqasi haqida
                 </button>
               </li>

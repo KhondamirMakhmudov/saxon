@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/header";
 import Menu from "@/components/menu";
 import Image from "next/image";
@@ -8,17 +8,32 @@ import Reveal from "@/components/reveal";
 import RevealLeft from "@/components/reveal/revealLeft";
 import RevealRight from "@/components/reveal/revealRight";
 import Footer from "@/components/footer";
+import { useRouter } from "next/router";
 
 const Index = () => {
+  const router = useRouter();
+  const { tab } = router.query;
   const [isOpenCareer, setIsOpenCareer] = useState(false);
   const [tabs, setTabs] = useState(1);
+  const [activeTab, setActiveTab] = useState("Yaxshi-sabablar");
+
+  const handleTabClick = (tab) => {
+    router.push(`/saxon?tab=${tab}`);
+  };
+
+  useEffect(() => {
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [tab]);
+
   const selectPage = (tab) => {
     setTabs(tab);
   };
 
   const toggleDropdownCareer = () => {
     setIsOpenCareer(!isOpenCareer);
-    setTabs(2);
+    handleTabClick("O‘qishdan-keyin-karyera");
   };
 
   return (
@@ -37,9 +52,11 @@ const Index = () => {
               className={"flex flex-col gap-y-[20px] p-[20px] text-[#494949]"}
             >
               <li
-                className={`cursor-pointer ${tabs === 1 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                className={`cursor-pointer ${activeTab === "Yaxshi-sabablar" ? "text-[#00B06C]" : "text-[#494949]"}`}
               >
-                <button onClick={() => selectPage(1)}>Yaxshi sabablar</button>
+                <button onClick={() => handleTabClick("Yaxshi-sabablar")}>
+                  Yaxshi sabablar
+                </button>
               </li>
               <li
                 className={`cursor-pointer ${isOpenCareer ? "text-[#00B06C]" : "text-[#494949]"}`}
@@ -49,7 +66,7 @@ const Index = () => {
                   className={"flex cursor-pointer items-center"}
                 >
                   <p
-                    className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    className={`${activeTab === "O‘qishdan-keyin-karyera" ? "text-[#00B06C]" : "text-[#494949]"}`}
                   >
                     O‘qishdan keyin karyera
                   </p>
@@ -66,9 +83,9 @@ const Index = () => {
                     className={`!text-[14px] ml-[18px] flex flex-col gap-y-[10px] font-normal mt-[10px] font-lato `}
                   >
                     <li
-                      className={`${tabs === 2 ? "text-[#00B06C]" : "text-[#494949]"}`}
+                      className={`${activeTab === "Yashash" ? "text-[#00B06C]" : "text-[#494949]"}`}
                     >
-                      <button onClick={() => selectPage(3)}>
+                      <button onClick={() => handleTabClick("Yashash")}>
                         Yashash (transport, telefon va h.z.)
                       </button>
                     </li>
@@ -78,7 +95,7 @@ const Index = () => {
             </ul>
           </div>
 
-          {tabs === 1 && (
+          {activeTab === "Yaxshi-sabablar" && (
             <div className={"col-span-9"}>
               <Title>Yaxshi sabablar</Title>
 
@@ -289,7 +306,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 2 && (
+          {activeTab === "O‘qishdan-keyin-karyera" && (
             <div className={"col-span-9"}>
               <Title>O‘qishdan keyin karyera</Title>
 
@@ -376,7 +393,7 @@ const Index = () => {
             </div>
           )}
 
-          {tabs === 3 && (
+          {activeTab === "Yashash" && (
             <div className={"col-span-9"}>
               <Title>Yashash (transport, telefon va h.z.)</Title>
 
