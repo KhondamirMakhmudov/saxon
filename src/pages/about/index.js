@@ -120,19 +120,19 @@ const Index = () => {
                   className={"flex cursor-pointer items-center"}
                 >
                   <p
-                    className={`${isOpenServices ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    className={`${!isOpenServices ? "text-[#00B06C]" : "text-[#494949]"}`}
                   >
                     Xizmatlar
                   </p>
                   <Image
-                    className={`${isOpenServices ? "rotate-0" : "rotate-180"} ${activeTab === "Xizmatlar" ? "fill-[#00B06C]" : "fill-[#494949]"} transform transition-transform`}
+                    className={`${!isOpenServices ? "rotate-0" : "rotate-180"} ${activeTab === "Xizmatlar" ? "fill-[#00B06C]" : "fill-[#494949]"} transform transition-transform`}
                     src={"/icons/vector-down.svg"}
                     alt={"down"}
                     width={16}
                     height={16}
                   />
                 </button>
-                {isOpenServices && (
+                {!isOpenServices && (
                   <motion.ul
                     initial={{ opacity: 0, translateY: "30px" }}
                     animate={{ opacity: 100, translateY: "0px" }}
@@ -177,12 +177,12 @@ const Index = () => {
                   className={"flex cursor-pointer items-center"}
                 >
                   <p
-                    className={`${isOpenCollege ? "text-[#00B06C]" : "text-[#494949]"}`}
+                    className={`${!isOpenCollege ? "text-[#00B06C]" : "text-[#494949]"}`}
                   >
                     Tayyorgarlik kolleji
                   </p>
                   <Image
-                    className={`${isOpenCollege ? "rotate-0" : "rotate-180"} transform transition-transform`}
+                    className={`${!isOpenCollege ? "rotate-0" : "rotate-180"} transform transition-transform`}
                     src={"/icons/vector-down.svg"}
                     alt={"down"}
                     width={16}
@@ -190,7 +190,7 @@ const Index = () => {
                   />
                 </button>
 
-                {isOpenCollege && (
+                {!isOpenCollege && (
                   <motion.ul
                     initial={{ opacity: 0, translateY: "30px" }}
                     animate={{ opacity: 100, translateY: "0px" }}

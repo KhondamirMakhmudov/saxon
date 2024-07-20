@@ -359,17 +359,35 @@ export default function Home() {
           </div>
 
           <AdviceCard
+            url={"/about?tab=Tayyorlov%20kolleji%20haqida"}
             title={"Tayyorlov kolleji haqida"}
             image={"/images/advice1.png"}
           />
           <AdviceCard
+            url={"/about?tab=Ro‘yhatdan%20o‘tish"}
             title={"Ro‘yhatdan o’tish"}
             image={"/images/advice2.png"}
           />
-          <AdviceCard title={"Kurs mazmuni"} image={"/images/advice3.png"} />
-          <AdviceCard title={"Voqealar"} image={"/images/advice4.png"} />
-          <AdviceCard title={"Kurs to’lovi"} image={"/images/advice5.png"} />
-          <AdviceCard title={"Baholash testi"} image={"/images/advice6.png"} />
+          <AdviceCard
+            url={"/about?tab=Kurs%20mazmuni"}
+            title={"Kurs mazmuni"}
+            image={"/images/advice3.png"}
+          />
+          <AdviceCard
+            url={"/about?tab=Voqealar"}
+            title={"Voqealar"}
+            image={"/images/advice4.png"}
+          />
+          <AdviceCard
+            url={"/about?tab=Kurs%20to’lovi"}
+            title={"Kurs to’lovi"}
+            image={"/images/advice5.png"}
+          />
+          <AdviceCard
+            url={"/about?tab=Baholash%20testi"}
+            title={"Baholash testi"}
+            image={"/images/advice6.png"}
+          />
         </div>
       </section>
 
