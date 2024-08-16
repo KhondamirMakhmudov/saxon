@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import Header from "@/components/header";
 import Menu from "@/components/menu";
 import Button from "@/components/button";
@@ -17,6 +15,7 @@ import Reveal from "@/components/reveal";
 import RevealLeft from "@/components/reveal/revealLeft";
 import RevealRight from "@/components/reveal/revealRight";
 import RevealBottom from "@/components/reveal/revealBottom";
+import Head from "next/head";
 
 export default function Home() {
   const [chooseEducation, setChooseEducation] = useState("university");
@@ -27,6 +26,7 @@ export default function Home() {
 
   return (
     <div className={"min-h-[100vh]"}>
+      <Head>Saxon</Head>
       <Header />
       <Menu active={1} />
       <div
