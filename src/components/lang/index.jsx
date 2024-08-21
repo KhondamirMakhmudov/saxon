@@ -58,10 +58,10 @@ const LanguageSelectButton = () => {
         <Image src={"/images/uz.png"} alt="uz" width={40} height={40} />
       </button>
       <button>
-        <Image src={"/images/en.png"} alt="uz" width={40} height={40} />
+        <Image src={"/images/de.png"} alt="uz" width={40} height={40} />
       </button>
       <button>
-        <Image src={"/images/de.png"} alt="uz" width={40} height={40} />
+        <Image src={"/images/ru.png"} alt="uz" width={40} height={40} />
       </button>
     </div>
   );

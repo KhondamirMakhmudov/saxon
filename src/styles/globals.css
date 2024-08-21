@@ -35,3 +35,13 @@ body {
 .font-philosopher {
   font-family: 'Philosopher';
 }
+
+
+.dropdown-menu {
+  position: absolute;
+
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

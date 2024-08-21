@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { get, isEqual } from "lodash";
+import { get, isEqual, isNull } from "lodash";
 import Link from "next/link";
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -58,6 +58,8 @@ const Menu = ({ active = 0 }) => {
     url: URLS.menu,
   });
 
+  console.log(get(menu, "data"));
+
   return (
     <div>
       <div className={"bg-[#00965C] md:block hidden relative  z-20 "}>
@@ -92,19 +94,60 @@ const Menu = ({ active = 0 }) => {
               "col-span-8 bg-[#00965C]  h-full rounded-[6px] z-10 flex items-center gap-x-10  justify-end"
             }
           >
-            {menuData.map((item) => (
-              <li
-                className={clsx(
-                  "text-lg cursor-pointer font-philosopher text-[#C3C3C3]",
-                  {
-                    "text-[#fff] underline": isEqual(get(item, "id"), active),
-                  }
-                )}
-                key={get(item, "id")}
-              >
-                <Link href={get(item, "url")}>{get(item, "title")}</Link>
-              </li>
-            ))}
+            {get(menu, "data", []).map((item) =>
+              !isNull(get(item, "parent")) ? (
+                ""
+              ) : (
+                <li
+                  className={clsx(
+                    `text-lg cursor-pointer font-philosopher text-[#C3C3C3] dropdown relative`,
+                    {
+                      "text-[#fff] underline": isEqual(get(item, "id"), active),
+                    }
+                  )}
+                  key={get(item, "id")}
+                >
+                  <Link href={`/${get(item, "slug")}`}>
+                    {get(item, "title")}
+                  </Link>
+
+                  {get(item, "parent", []) !== get(item, "id") ? (
+                    ""
+                  ) : (
+                    <ul
+                      className={
+                        "dropdown-menu block z-50   bg-gray-50  absolute lg:w-[180px] w-[100px] text-start shadow-xl  rounded-[5px]"
+                      }
+                    >
+                      <Link
+                        key={get(item, "id")}
+                        className={clsx(
+                          "hover:text-[#00AFC0] transition-all  text-[14px] border-b-transparent font-medium ",
+                          {
+                            "!border-b-[#1890FF] text-[#001A57]": isEqual(
+                              get(item, "id"),
+                              active
+                            ),
+                          }
+                        )}
+                        href={`/about?tab=${get(item, "title")
+                          .toLowerCase()
+                          .replace(" ", "-")
+                          .replace("'", "")}`}
+                      >
+                        <li
+                          className={
+                            "p-[10px] border-b-[1px] border-b-[#D6E0F5] "
+                          }
+                        >
+                          {get(item, "title")}
+                        </li>
+                      </Link>
+                    </ul>
+                  )}
+                </li>
+              )
+            )}
           </ul>
         </div>
       </div>
