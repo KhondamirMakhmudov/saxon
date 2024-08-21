@@ -60,7 +60,7 @@ const Menu = ({ active = 0 }) => {
 
   return (
     <div>
-      <div className={"bg-[#00965C] md:block hidden relative  -z-20 "}>
+      <div className={"bg-[#00965C] md:block hidden relative  z-20 "}>
         <div className={"left-0 bg-white w-1/2 h-full -z-10 absolute"}></div>
         <div
           className={"absolute inset-0 -z-10  bg-no-repeat bg-center"}
@@ -89,7 +89,7 @@ const Menu = ({ active = 0 }) => {
 
           <ul
             className={
-              "col-span-8 bg-[#00965C]  h-full rounded-[6px] -z-10 flex items-center gap-x-10  justify-end"
+              "col-span-8 bg-[#00965C]  h-full rounded-[6px] z-10 flex items-center gap-x-10  justify-end"
             }
           >
             {menuData.map((item) => (
