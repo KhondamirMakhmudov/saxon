@@ -1,1 +1,3 @@
-export default URLS = {};
+export const URLS = {
+  menu: "main/m/list/",
+};

@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import Search from "@/components/search";
 import { motion } from "framer-motion";
+import LanguageSelectButton from "../lang";
 
 const Header = () => {
   return (
-    <div className={" grid-cols-12 bg-[#006C42] py-2 md:grid hidden"}>
+    <div className={" grid-cols-12 bg-[#006C42] py-2 md:grid hidden z-50"}>
       <div
         className={"col-span-12 container flex justify-between items-center"}
       >
@@ -48,7 +49,7 @@ const Header = () => {
           className={"flex gap-x-[100px]"}
         >
           <Search />
-          <div className={"flex gap-x-1"}>
+          <div className={"flex gap-x-4  items-center"}>
             <Link href={"/"}>
               <span className={"text-[#fff]  md:text-sm lg:text-base text-xs"}>
                 Ro’yhatdan o’tish{" "}
@@ -62,6 +63,8 @@ const Header = () => {
                 Kirish
               </span>
             </Link>
+
+            <LanguageSelectButton />
           </div>
         </motion.div>
       </div>

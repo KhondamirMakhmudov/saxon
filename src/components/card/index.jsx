@@ -9,7 +9,7 @@ const Card = ({ image, title, desc, url = "#" }) => {
         "xl:w-[450px] lg:w-[400px] w-[350px]  lg:min-h-[420px] md:min-h-[350px] min-h-[330px] text-center flex flex-col items-center   rounded-[6px] bg-[#fff] lg:py-6 md:py-8 py-10 px-[16px]"
       }
     >
-      <img
+      <Image
         className={
           "lg:w-[96px] lg:h-[96px] md:w-[80px] md:h-[80px] w-[70px] h-[70px]"
         }

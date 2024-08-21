@@ -22,7 +22,7 @@ request.interceptors.request.use(
     const token = get(
       JSON.parse(storage.get("settings")),
       "state.token",
-      "eu8fldCYpgsIH7ifXG2rOppI6UN4SFA7th8R505intskqFxGifc9xr4xrlLmiN8V"
+      "6sOtahqnT24ZiwLyy6dYgxTP1gbaLXRBlfO5U4THRf4B140ZTFnGZzyEmH9sb5pp"
     );
 
     if (token) {

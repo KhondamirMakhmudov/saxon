@@ -1,1 +1,3 @@
-export default KEYS = {};
+export const KEYS = {
+  menu: "menu",
+};
